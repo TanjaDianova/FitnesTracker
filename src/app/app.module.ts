@@ -16,7 +16,10 @@ import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { environment } from 'src/environments/environment';
 import { UIService } from './shared/ui.service';
-import { AuthModule } from './auth/auth.module'
+import { AuthModule } from './auth/auth.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducer';
+
 
 
 
@@ -39,7 +42,8 @@ import { AuthModule } from './auth/auth.module'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AuthModule,
-    AngularFirestoreModule 
+    AngularFirestoreModule,
+    StoreModule.forRoot(reducers)   
    ],
   providers: [AuthService, TrainingService, UIService,{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent],
